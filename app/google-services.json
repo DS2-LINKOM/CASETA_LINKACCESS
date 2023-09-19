@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:215530583615:android:2aa0e33b650081ce82aa8a",
+        "android_client_info": {
+          "package_name": "mx.linkom.caseta_canjur"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsBQizjGlLxkYykzcCH4CBZez5cR_5W00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:215530583615:android:ab8e6ea146f959bf82aa8a",
         "android_client_info": {
           "package_name": "mx.linkom.caseta_cjuriquilla"
