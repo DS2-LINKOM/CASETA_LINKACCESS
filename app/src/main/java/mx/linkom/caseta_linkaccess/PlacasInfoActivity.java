@@ -49,7 +49,7 @@ public class PlacasInfoActivity extends mx.linkom.caseta_linkaccess.Menu{
 
     public void RegPlacas(){
 
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/placas_1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/placas_1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -87,7 +87,7 @@ public class PlacasInfoActivity extends mx.linkom.caseta_linkaccess.Menu{
 
     public void RegPlacas2(){
 
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/placas_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/placas_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -126,7 +126,7 @@ public class PlacasInfoActivity extends mx.linkom.caseta_linkaccess.Menu{
 
     public void Visita(final String Id){
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_reg_5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_reg_5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -164,7 +164,7 @@ public class PlacasInfoActivity extends mx.linkom.caseta_linkaccess.Menu{
 
     public void Usuario(final String IdUsu){
 
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/placas_3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/placas_3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -202,7 +202,7 @@ public class PlacasInfoActivity extends mx.linkom.caseta_linkaccess.Menu{
     }
 
     public void dtlLugar(final String idUsuario){
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/placas_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/placas_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

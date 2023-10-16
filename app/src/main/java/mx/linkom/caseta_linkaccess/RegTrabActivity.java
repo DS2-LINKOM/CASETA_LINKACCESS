@@ -367,7 +367,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     public void traeDepartamento() {
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/reg_traba1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -504,7 +504,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
                         }
                     }).create().show();
         } else {
-            String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/reg_traba2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -544,7 +544,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void Registro() {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/reg_traba3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

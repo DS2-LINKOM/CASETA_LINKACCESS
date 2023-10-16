@@ -253,7 +253,7 @@ public class RecepcionActivity extends mx.linkom.caseta_linkaccess.Menu{
 
     public void calles(){
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/correspondencia_1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -337,7 +337,7 @@ public class RecepcionActivity extends mx.linkom.caseta_linkaccess.Menu{
 
     public void numeros(final String IdUsu){
 
-            String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/correspondencia_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -412,7 +412,7 @@ public class RecepcionActivity extends mx.linkom.caseta_linkaccess.Menu{
                     }).create().show();
         }else{
 
-            String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/correspondencia_3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -475,7 +475,7 @@ public class RecepcionActivity extends mx.linkom.caseta_linkaccess.Menu{
 
 
     public void Registrar (){
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/correspondencia_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

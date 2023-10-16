@@ -534,7 +534,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void menu() {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -609,7 +609,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void submenu(final String id_app) {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -633,6 +633,28 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
                         try {
                             ja6 = new JSONArray(response);
                             imagenes();
+
+                            //OCULTAR VIEW DE FOTO PLACA
+                            if (ja6.getString(3).equals("0") && (ja6.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) && rutaImagenPlaca != null){
+                                try {
+                                    if (ja6.getString(3).equals("1")){
+                                        Foto1.setVisibility(View.VISIBLE);
+                                        espacio2.setVisibility(View.VISIBLE);
+                                        nombre_foto1.setVisibility(View.VISIBLE);
+                                    }else {
+                                        if (!rutaImagenPlaca.isEmpty()){
+                                            registrar1.setVisibility(View.VISIBLE);
+                                            espacio1.setVisibility(View.VISIBLE);
+                                        }
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }else if ((!rutaImagenPlaca.isEmpty() && ja6.getString(3).equals("0")) || (Conf.getTipoReg().equals("Peatonal") && ja6.getString(3).equals("0"))){
+                                registrar1.setVisibility(View.VISIBLE);
+                                espacio1.setVisibility(View.VISIBLE);
+                            }
+
                             Visita();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -1283,7 +1305,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
     public void Visita() {
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_gru_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_gru_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1356,7 +1378,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
     public void Usuario(final String IdUsu) { //DATOS USUARIO
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1427,7 +1449,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void dtlLugar(final String idUsuario) {
-        String URLResidencial = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php3.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php3.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
             @Override
@@ -1496,7 +1518,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void salidas(final String id_visitante) {
-        String URLResidencial = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
 
@@ -1579,7 +1601,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
     public void Dtl_pre() {
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_reg_8.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_reg_8.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1730,7 +1752,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
                             });
 
                     //PLACA
-                    if (ja7.getString(16).isEmpty()) {
+                    if (ja7.getString(16).isEmpty() || Global.getFotoPlaca()) {
                         txtFotoPlaca.setVisibility(View.GONE);
                     } else {
                         storageReference.child(Conf.getPin() + "/caseta/" + ja7.getString(16))
@@ -2099,7 +2121,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else {
 
-            String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

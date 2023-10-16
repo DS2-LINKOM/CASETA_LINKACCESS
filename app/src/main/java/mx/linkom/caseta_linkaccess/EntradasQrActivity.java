@@ -120,11 +120,11 @@ public class EntradasQrActivity extends mx.linkom.caseta_linkaccess.Menu {
 
         try {
             objectDetectorClass = new objectDetectorClass(getAssets(), "detectPlacaLKM.tflite", "labelmapTf.txt", 320);
-            Log.e("MainActivity", "Modelo cargado correctamente");
+            Log.e("EntradasQRActivity", "Modelo cargado correctamente");
             modeloCargado = true;
         } catch (IOException e) {
             modeloCargado = false;
-            Log.e("MainActivity", "Error al cargar modelo");
+            Log.e("EntradasQRActivity", "Error al cargar modelo");
         }
 
         menu();
@@ -259,7 +259,7 @@ public class EntradasQrActivity extends mx.linkom.caseta_linkaccess.Menu {
     int dia = fecha.get(Calendar.DAY_OF_MONTH);
 
     public void menu() {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -294,7 +294,7 @@ public class EntradasQrActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void submenu(final String id_app) {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -316,7 +316,8 @@ public class EntradasQrActivity extends mx.linkom.caseta_linkaccess.Menu {
                     if (response.length() > 0) {
                         try {
                             ja6 = new JSONArray(response);
-                            if (ja6.getString(9).trim().equals("1")){
+                            Log.e("ja6", response);
+                            if (ja6.getString(10).trim().equals("1")){
                                 Global.setFotoPlaca(true);
                             }else {
                                 Global.setFotoPlaca(false);
@@ -350,8 +351,9 @@ public class EntradasQrActivity extends mx.linkom.caseta_linkaccess.Menu {
 
         try {
             Log.e("FOTOPLACA", ja6.getString(10));
-            Log.e("FOTOPLACA", ja6.getString(9));
-            if (ja6.getString(9).equals("1")) {
+            Log.e("FOTOPLACA", ja6.getString(11));
+            if (ja6.getString(10).equals("1")) {
+                Log.e("OK", ja6.getString(11));
                 LayoutBtnPlaca.setVisibility(View.VISIBLE);
             }
         } catch (JSONException e) {
@@ -582,7 +584,7 @@ public class EntradasQrActivity extends mx.linkom.caseta_linkaccess.Menu {
 
         } else {
 
-            String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_reg_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+            String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_reg_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

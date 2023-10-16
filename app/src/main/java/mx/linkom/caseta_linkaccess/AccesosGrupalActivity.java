@@ -97,7 +97,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
     LinearLayout registrar1, registrar2, registrar3, registrar4;
     Button reg1, reg2, reg3, reg4, btn_foto1, btn_foto2, btn_foto3;
     LinearLayout Foto1View, Foto2View, Foto3View;
-    LinearLayout Foto1, Foto2, Foto3, CPlacasTexto2, LinLayPlacasTextoPorFoto, LinLayEspacioPlacasCono;
+    LinearLayout Foto1, Foto2, Foto3, CPlacasTexto2, LinLayPlacasTextoPorFoto, LinLayEspacioPlacasCono, LinLayRadioButtonsPlacas;
     ImageView view1, view2, view3;
     TextView nombre_foto1, nombre_foto2, nombre_foto3;
     Uri uri_img, uri_img2, uri_img3;
@@ -195,6 +195,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
         LinLayPlacasTextoPorFoto = (LinearLayout) findViewById(R.id.LinLayPlacasTextoPorFoto);
         LinLayEspacioPlacasCono = (LinearLayout) findViewById(R.id.LinLayEspacioPlacasCono);
         editTextPlacasPorFoto = (EditText) findViewById(R.id.setPlacasPorFoto);
+        LinLayRadioButtonsPlacas = (LinearLayout) findViewById(R.id.LinLayRadioButtonsPlacas);
 
         //Variables para placa
         espacio1Placa = (LinearLayout) findViewById(R.id.espacio1Placa);
@@ -275,6 +276,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
                 CPlacasTexto.setVisibility(View.GONE);
                 LinLayEspacioPlacasCono.setVisibility(View.GONE);
                 CPlacasTexto2.setVisibility(View.GONE);
+                LinLayRadioButtonsPlacas.setVisibility(GONE);
             }
         } else {
             Placas.setFilters(new InputFilter[]{filter, new InputFilter.AllCaps() {
@@ -593,7 +595,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void menu() {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -669,7 +671,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void submenu(final String id_app) {
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -693,6 +695,28 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
                         try {
                             ja6 = new JSONArray(response);
                             imagenes();
+
+                            //OCULTAR VIEW DE FOTO PLACA
+                            if (ja6.getString(3).equals("0") && (ja6.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) && rutaImagenPlaca != null){
+                                try {
+                                    if (ja6.getString(3).equals("1")){
+                                        Foto1.setVisibility(View.VISIBLE);
+                                        espacio2.setVisibility(View.VISIBLE);
+                                        nombre_foto1.setVisibility(View.VISIBLE);
+                                    }else {
+                                        if (!rutaImagenPlaca.isEmpty()){
+                                            registrar1.setVisibility(View.VISIBLE);
+                                            espacio1.setVisibility(View.VISIBLE);
+                                        }
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }else if ((!rutaImagenPlaca.isEmpty() && ja6.getString(3).equals("0")) || (Conf.getTipoReg().equals("Peatonal") && ja6.getString(3).equals("0"))){
+                                registrar1.setVisibility(View.VISIBLE);
+                                espacio1.setVisibility(View.VISIBLE);
+                            }
+
                             Visita();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -751,8 +775,10 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
 
             if (ja6.getString(0).equals("0") || ja6.getString(3).equals("0")) {
 
-                registrar1.setVisibility(View.VISIBLE);
-                espacio1.setVisibility(View.VISIBLE);
+                if (!Global.getFotoPlaca() && !rutaImagenPlaca.isEmpty()){
+                    registrar1.setVisibility(View.VISIBLE);
+                    espacio1.setVisibility(View.VISIBLE);
+                }
 
                 Foto1.setVisibility(View.GONE);
                 espacio2.setVisibility(View.GONE);
@@ -1300,7 +1326,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     public void Visita() {
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_gru_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_gru_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1380,7 +1406,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     public void Usuario(final String IdUsu) { //DATOS USUARIO
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1440,7 +1466,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void dtlLugar(final String idUsuario) {
-        String URLResidencial = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php3.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php3.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
             @Override
@@ -1505,7 +1531,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void salidas(final String id_visitante) {
-        String URLResidencial = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
 
@@ -1871,7 +1897,7 @@ public class AccesosGrupalActivity extends mx.linkom.caseta_linkaccess.Menu {
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else {
 
-            String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

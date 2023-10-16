@@ -55,7 +55,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
     private mx.linkom.caseta_linkaccess.Configuracion Conf;
     JSONArray ja1,ja2,ja3;
     TextView perma,sali,entr,nombre;
-    TextView permaT,saliT,entrT;
+    TextView permaT,saliT,entrT,textViewVersionDisponible;
     String var1,var2,var3,var4,var5;
     String var6,var7,var8,var9,var10;
     LinearLayout rlVistantes,rlTrabajadores;
@@ -103,6 +103,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
         nombre.setText(Conf.getNomResi());
 
         constLayoutAnuncioFotosPendientes = (ConstraintLayout) findViewById(R.id.constLayoutAnuncioFotosPendientes);
+        textViewVersionDisponible = (TextView)findViewById(R.id.textViewVersionDisponible);
 
         constLayoutAnuncioFotosPendientes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,26 +116,6 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
 
         anuncioVersiones = (ConstraintLayout) findViewById(R.id.constLayoutAnuncioVersiones);
 
-        anuncioVersiones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DashboardActivity.this);
-                alertDialogBuilder.setTitle("Nueva actualización disponible");
-                alertDialogBuilder.setMessage("Caseta demo PA: \nFotos en segundo plano \nFecha y hora al tomar fotografias");
-
-                alertDialogBuilder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        String url = "https://descargas.linkom.mx/apk/CASETA_CONDADO_252337.apk";
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                        startActivity(intent);
-                    }
-                });
-
-                alertDialogBuilder.create().show();
-
-            }
-        });
 
         /*iconoInternet = (ImageView) findViewById(R.id.iconoInternetDashboard);
 
@@ -291,7 +272,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
 
     public void menu() {
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/menu.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -306,6 +287,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
                         try {
                             ja3 = new JSONArray(response);
 
+                            Log.e("version", ja3.getString(16).replace(".",""));
                             Contador();
                         } catch (JSONException e) {
                             Toast.makeText(getApplicationContext(), "Usuario y/o Contraseña Incorrectos", Toast.LENGTH_LONG).show();
@@ -337,7 +319,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
 
     public void Contador(){
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/contadores.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/contadores.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -373,7 +355,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
 
     public void Contador2(){
 
-        String URL = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/contadoresT.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/contadoresT.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -384,9 +366,36 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
                     try {
                         ja2 = new JSONArray(response);
 
-                        if (Global.getVersionApp() != "24.24.37"){
+                        if (Global.getVersionApp().trim() != ja3.getString(16).trim()){
                             anuncioVersiones.setVisibility(View.VISIBLE);
+                            textViewVersionDisponible.setText("Versión: Link Access " + ja3.getString(16));
                             AnimationUtil.startAnimation(DashboardActivity.this, anuncioVersiones);
+
+                            anuncioVersiones.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DashboardActivity.this);
+                                    alertDialogBuilder.setTitle("Nueva actualización disponible");
+                                    alertDialogBuilder.setMessage("Caseta LINK ACCESS: \n\n1.- Clic en actualizar \n2.- Una vez descargado el archivo .apk cerrar sesion y actualizar app");
+
+                                    alertDialogBuilder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            String url = null;
+                                            try {
+                                                url = "https://descargas.linkom.mx/apk/CASETA_GK_"+ ja3.getString(16).replace(".","").trim() +".apk";
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                                            startActivity(intent);
+                                        }
+                                    });
+
+                                    alertDialogBuilder.create().show();
+
+                                }
+                            });
                         }else {
                             anuncioVersiones.setVisibility(View.GONE);
                         }

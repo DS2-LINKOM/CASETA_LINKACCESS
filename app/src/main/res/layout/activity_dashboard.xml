@@ -75,7 +75,7 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/banner_background"
-                android:visibility="visible"
+                android:visibility="gone"
                 >
 
                 <TextView
@@ -109,10 +109,10 @@
                     app:layout_constraintVertical_bias="0.303" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textViewVersionDisponible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Versión: GK 2210 24.22.12"
+                    android:text="Versión: Link Access 24.22.12"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     android:textStyle="bold"

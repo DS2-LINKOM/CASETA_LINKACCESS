@@ -75,7 +75,7 @@ public class AccesosTrabajadorActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
     public void Trabajador(){
 
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/tbj_php1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/tbj_php1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -117,7 +117,7 @@ public class AccesosTrabajadorActivity extends mx.linkom.caseta_linkaccess.Menu 
 
 
     public void Dtl(final String id_traba){
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/tbj_php2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/tbj_php2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -218,7 +218,7 @@ public class AccesosTrabajadorActivity extends mx.linkom.caseta_linkaccess.Menu 
     public void Registrar(){
 
 
-        String url = "https://2210.kap-adm.mx/plataforma/casetaV2/controlador/grupokap_access/tbj_php3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/tbj_php3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
