@@ -193,6 +193,8 @@ public class PreEntradasActivity extends mx.linkom.caseta_linkaccess.Menu {
         Calle = (Spinner) findViewById(R.id.setCalle);
         Pasajeros = (Spinner) findViewById(R.id.setPasajeros);
 
+        txtFotoPlaca = (TextView) findViewById(R.id.txtFotoPreEntradasPlacas);
+        txtFotoPlaca.setText(Global_info.getTexto1Imagenes());
         editTextPlacasPorFoto = (EditText) findViewById(R.id.setPlacasPorFoto);
         CPlacasTexto = (LinearLayout) findViewById(R.id.CPlacasTexto);
         LinLayPlacasTextoPorFoto = (LinearLayout) findViewById(R.id.LinLayPlacasTextoPorFoto);
@@ -1180,7 +1182,7 @@ public class PreEntradasActivity extends mx.linkom.caseta_linkaccess.Menu {
         try {
             Visita();
 
-            if (ja3.getString(9).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) {
+            if (ja3.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) {
                 Global.setFotoPlaca(true);
                 espacio1Placa.setVisibility(View.VISIBLE);
                 FotoPlaca.setVisibility(View.VISIBLE);
@@ -1251,11 +1253,11 @@ public class PreEntradasActivity extends mx.linkom.caseta_linkaccess.Menu {
                 registrar1.setVisibility(View.GONE);
                 espacio1.setVisibility(View.GONE);
 
-                if (ja3.getString(9).trim().equals("0") || (ja3.getString(9).trim().equals("1") && Conf.getTipoReg().equals("Peatonal"))) {
+                if (ja3.getString(10).trim().equals("0") || (ja3.getString(10).trim().equals("1") && Conf.getTipoReg().equals("Peatonal"))) {
                     Foto1.setVisibility(View.VISIBLE);
                     espacio2.setVisibility(View.VISIBLE);
                     nombre_foto1.setVisibility(View.VISIBLE);
-                } else if (ja3.getString(9).trim().equals("1")) {
+                } else if (ja3.getString(10).trim().equals("1")) {
                     if (!nombreImagenPlaca.isEmpty() && !rutaImagenPlaca.isEmpty()) {
 
                         Bitmap bitmap;

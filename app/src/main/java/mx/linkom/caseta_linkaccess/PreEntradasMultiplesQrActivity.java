@@ -683,7 +683,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
     public void imagenes() {
         try {
 
-            if (ja6.getString(9).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) {
+            if (ja6.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) {
                 Global.setFotoPlaca(true);
                 espacio1Placa.setVisibility(View.VISIBLE);
                 FotoPlaca.setVisibility(View.VISIBLE);
@@ -755,11 +755,11 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                 registrar1.setVisibility(View.GONE);
                 espacio1.setVisibility(View.GONE);
 
-                if (ja6.getString(9).trim().equals("0") || (ja6.getString(9).trim().equals("1") && Conf.getTipoReg().equals("Peatonal"))) {
+                if (ja6.getString(10).trim().equals("0") || (ja6.getString(10).trim().equals("1") && Conf.getTipoReg().equals("Peatonal"))) {
                     Foto1.setVisibility(View.VISIBLE);
                     espacio2.setVisibility(View.VISIBLE);
                     nombre_foto1.setVisibility(View.VISIBLE);
-                } else if (ja6.getString(9).trim().equals("1")) {
+                } else if (ja6.getString(10).trim().equals("1")) {
                     if (!nombreImagenPlaca.isEmpty() && !rutaImagenPlaca.isEmpty()) {
 
                         Bitmap bitmap;
