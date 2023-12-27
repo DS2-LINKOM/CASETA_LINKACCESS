@@ -3,6 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/drawable-xhdpi/btn_presionado.xml" value="0.1815" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/drawable-xhdpi/ripple_effect.xml" value="0.1815" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/drawable/boton_descargar.xml" value="0.1815" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/acitivity_accesostrabajador.xml" value="0.1" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/acitivity_accesostrabajadorsalida.xml" value="0.19692307692307692" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesos.xml" value="0.2" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesos_salidas.xml" value="0.2" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesosgrupales.xml" value="0.2" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesosgrupales_salidas.xml" value="0.2" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesosmultiples.xml" value="0.1" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesosmultiplessalidas.xml" value="0.2" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesosregistro.xml" value="0.33" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_bitacora.xml" value="0.19692307692307692" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_correspondencia.xml" value="0.19692307692307692" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_entrega.xml" value="0.19692307692307692" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_escaneo_visita.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_incidencia.xml" value="0.1" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_placasinfo.xml" value="0.19692307692307692" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_preentradas.xml" value="0.2" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_preentradasgrupalqr.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_preentradasmultiplesqr.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_preentradasqr.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_recepcion.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_regtrab.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_regtrab2.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_regtrab3.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_reportes.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_reservacion.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_rondines.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_rondines_lista.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_rondinincidencias.xml" value="0.1" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_rondinincidencias_qr.xml" value="0.20416666666666666" />
+        <entry key="..\:/APPS CASETA/DEMO CASETA_LINKACCESS/CASETA_LINKACCESS/app/src/main/res/layout/activity_visitasrecepentradasdetalle.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/likom/Documents/MIGUE/LINK ACCESS/LINK ACCESS GENERAL/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesos.xml" value="0.1" />
         <entry key="..\:/Users/likom/Documents/MIGUE/LINK ACCESS/LINK ACCESS GENERAL/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesos_morosos.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/likom/Documents/MIGUE/LINK ACCESS/LINK ACCESS GENERAL/CASETA_LINKACCESS/app/src/main/res/layout/activity_accesos_salidas.xml" value="0.1" />

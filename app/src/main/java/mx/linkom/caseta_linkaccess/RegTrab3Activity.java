@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -126,7 +127,15 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
         Modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ValidacionM();
+                Modificar.setEnabled(false);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        botonPresionado(0);
+                        ValidacionM();
+                    }
+                }, 300);
             }
         });
 
@@ -528,12 +537,14 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+                        botonPresionado(1);
+
                         //Intent i = new Intent(getApplicationContext(), RegTrabActivity.class);
                         // startActivity(i);
                         // finish();
 
                     }
-                }).create().show();
+                }).setCancelable(false).create().show();
     }
 
     public void Registro() {
@@ -549,6 +560,7 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
                 if(response.equals("error")){
 
                     pd.dismiss();
+                    botonPresionado(1);
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RegTrab3Activity.this);
                     alertDialogBuilder.setTitle("Alerta");
@@ -595,6 +607,8 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("TAG", "Error: " + error.toString());
+                botonPresionado(1);
+                alertaErrorAlRegistrar("Error al registrar visita \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
             }
         }) {
             @Override
@@ -794,6 +808,34 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
             }
         }
         return false;
+    }
+
+    public void botonPresionado(int estado){
+        //estado --> 0=presionado   1=restablecer
+
+        Button button = Modificar;
+
+        if (estado == 0){
+            button.setBackgroundResource(R.drawable.btn_presionado);
+            button.setTextColor(0xFF5A6C81);
+        }else if (estado == 1){
+            button.setBackgroundResource(R.drawable.ripple_effect);
+            button.setTextColor(0xFF27374A);
+            button.setEnabled(true);
+        }
+    }
+
+    public void alertaErrorAlRegistrar(String texto){
+        pd.dismiss();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RegTrab3Activity.this);
+        alertDialogBuilder.setTitle("Alerta");
+        alertDialogBuilder
+                .setMessage(texto)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                }).create().show();
     }
 
     @Override
