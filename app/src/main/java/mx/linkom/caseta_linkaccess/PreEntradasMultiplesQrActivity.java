@@ -2,6 +2,7 @@ package mx.linkom.caseta_linkaccess;
 
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Log;
@@ -22,6 +24,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -63,6 +66,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -81,7 +85,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
     TextView tvMensaje;
     TextView Nombre, Dire, Visi, Tipo;
 
-    EditText Placas,editTextPlacasPorFoto;
+    EditText Placas, editTextPlacasPorFoto;
     Spinner Pasajeros;
     LinearLayout Pasajeros1;
 
@@ -120,6 +124,9 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
     private String btnFotoPlacaFuePresionado = "";
 
     private int btnRegistrarPresionado = 0;
+
+    private ImageButton btnMicrofonoComentarios;
+    private static final int TXT_COMENTARIOS = 200;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -209,6 +216,14 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         viewPlaca = (ImageView) findViewById(R.id.viewPlaca);
         espacio2Placa = (LinearLayout) findViewById(R.id.espacio2Placa);
 
+        btnMicrofonoComentarios = (ImageButton) findViewById(R.id.btnMicrofonoComentarios);
+        Comentarios.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        btnMicrofonoComentarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iniciarEntradVoz("Diga los comentarios para esta visita", TXT_COMENTARIOS);
+            }
+        });
 
         /*iconoInternet = (ImageView) findViewById(R.id.iconoInternetPreentradasMultiplesQr);
 
@@ -674,15 +689,21 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                             ja6 = new JSONArray(response);
                             imagenes();
 
+                            if (ja6.getString(10).trim().equals("1")) {
+                                Global.setFotoPlaca(true);
+                            } else {
+                                Global.setFotoPlaca(false);
+                            }
+
                             //OCULTAR VIEW DE FOTO PLACA
-                            if (ja6.getString(3).equals("0") && (ja6.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) && rutaImagenPlaca != null){
+                            if (ja6.getString(3).equals("0") && (ja6.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) && rutaImagenPlaca != null) {
                                 try {
-                                    if (ja6.getString(3).equals("1")){
+                                    if (ja6.getString(3).equals("1")) {
                                         Foto1.setVisibility(View.VISIBLE);
                                         espacio2.setVisibility(View.VISIBLE);
                                         nombre_foto1.setVisibility(View.VISIBLE);
-                                    }else {
-                                        if (!rutaImagenPlaca.isEmpty()){
+                                    } else {
+                                        if (!rutaImagenPlaca.isEmpty()) {
                                             registrar1.setVisibility(View.VISIBLE);
                                             espacio1.setVisibility(View.VISIBLE);
                                         }
@@ -690,7 +711,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                            }else if ((!rutaImagenPlaca.isEmpty() && ja6.getString(3).equals("0")) || (Conf.getTipoReg().equals("Peatonal") && ja6.getString(3).equals("0"))){
+                            } else if ((!rutaImagenPlaca.isEmpty() && ja6.getString(3).equals("0")) || (Conf.getTipoReg().equals("Peatonal") && ja6.getString(3).equals("0"))) {
                                 registrar1.setVisibility(View.VISIBLE);
                                 espacio1.setVisibility(View.VISIBLE);
                             }
@@ -921,6 +942,21 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         }
     }
     //FOTOS
+
+    private void iniciarEntradVoz(String promt, int campo) {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, promt);
+
+        intent.putExtra("FIELD_EXTRA", campo);
+
+        try {
+            startActivityForResult(intent, campo);
+        } catch (ActivityNotFoundException e) {
+            Log.e("RECTETXT", e.toString());
+        }
+    }
 
     public void imgFotoPlacaOffline() {
         Intent intentCaptura = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -1293,6 +1329,12 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                 }
 
                 fotos4 = 1;
+            }
+
+            if (requestCode == TXT_COMENTARIOS && data != null) {
+                ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                String txtAnterior = " " + Comentarios.getText() + " " + result.get(0);
+                Comentarios.setText(txtAnterior);
             }
         }
     }
@@ -2347,20 +2389,17 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
 
         if ((Placas.getText().toString().equals("") && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals(""))) {
             pd.dismiss();
-            botonPresionado(1);
 
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else if ((Placas.getText().toString().equals(" ") && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals(" "))) {
             pd.dismiss();
-            botonPresionado(1);
 
             Toast.makeText(getApplicationContext(), "Campo de placas ", Toast.LENGTH_SHORT).show();
         } else if ((Placas.getText().toString().equals("N/A") && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals("N/A"))) {
             pd.dismiss();
-            botonPresionado(1);
 
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
-        } else {
+        }else {
 
             String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -2390,7 +2429,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
 
                     } else {
 
-                        if (Global_info.getCantidadFotosEnEsperaEnSegundoPlano(PreEntradasMultiplesQrActivity.this) >= Global_info.getLimiteFotosSegundoPlano()){
+                        if (Global_info.getCantidadFotosEnEsperaEnSegundoPlano(PreEntradasMultiplesQrActivity.this) >= Global_info.getLimiteFotosSegundoPlano()) {
                             if (fotos1 == 1) {
                                 upload1();
                             }
@@ -2403,7 +2442,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                             if (!nombreImagenPlaca.isEmpty()) {
                                 upload4();
                             }
-                        }else {
+                        } else {
                             if (fotos1 == 1) {
                                 ContentValues val_img1 = ValuesImagen(nombreImagen1, Conf.getPin() + "/caseta/" + nombreImagen1, rutaImagen1);
                                 Uri uri = getContentResolver().insert(UrisContentProvider.URI_CONTENIDO_FOTOS_OFFLINE, val_img1);
@@ -2511,7 +2550,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         StorageReference mountainImagesRef = null;
         mountainImagesRef = storageReference.child(Conf.getPin() + "/caseta/" + nombreImagen1);
 
-        Uri uri  = Uri.fromFile(new File(rutaImagen1));
+        Uri uri = Uri.fromFile(new File(rutaImagen1));
         UploadTask uploadTask = mountainImagesRef.putFile(uri);
 
         // Listen for state changes, errors, and completion of the upload.
@@ -2549,7 +2588,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         StorageReference mountainImagesRef2 = null;
         mountainImagesRef2 = storageReference.child(Conf.getPin() + "/caseta/" + nombreImagen2);
 
-        Uri uri  = Uri.fromFile(new File(rutaImagen2));
+        Uri uri = Uri.fromFile(new File(rutaImagen2));
         UploadTask uploadTask = mountainImagesRef2.putFile(uri);
 
 
@@ -2589,7 +2628,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         StorageReference mountainImagesRef3 = null;
         mountainImagesRef3 = storageReference.child(Conf.getPin() + "/caseta/" + nombreImagen3);
 
-        Uri uri  = Uri.fromFile(new File(rutaImagen3));
+        Uri uri = Uri.fromFile(new File(rutaImagen3));
         UploadTask uploadTask = mountainImagesRef3.putFile(uri);
 
         // Listen for state changes, errors, and completion of the upload.
@@ -2660,8 +2699,8 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         });
     }
 
-    public void eliminarFotoDirectorioLocal(String nombreFoto){
-        String tempfilepath ="";
+    public void eliminarFotoDirectorioLocal(String nombreFoto) {
+        String tempfilepath = "";
         File externalFilesDir = getExternalFilesDir(null);
         if (externalFilesDir != null) {
             tempfilepath = externalFilesDir.getAbsolutePath();
@@ -2678,7 +2717,7 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                                 if (!path.isDirectory() && path.getName().equals(nombreFoto)) {
                                     path.delete();
                                 }
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 Log.e("EliminarFoto", e.toString());
                             }
                         }
@@ -2689,13 +2728,13 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
 
             }
 
-        }else {
+        } else {
         }
     }
 
     public void Terminar() {
 
-        if (Global_info.getCantidadFotosEnEsperaEnSegundoPlano(PreEntradasMultiplesQrActivity.this) > 0){
+        if (Global_info.getCantidadFotosEnEsperaEnSegundoPlano(PreEntradasMultiplesQrActivity.this) > 0) {
             if (!servicioFotos()) {
                 Intent cargarFotos = new Intent(PreEntradasMultiplesQrActivity.this, subirFotos.class);
                 startService(cargarFotos);
@@ -2743,12 +2782,12 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
         return false;
     }
 
-    public void botonPresionado(int estado){
+    public void botonPresionado(int estado) {
         //estado --> 0=presionado   1=restablecer
 
         Button button = reg1;
 
-        switch (btnRegistrarPresionado){
+        switch (btnRegistrarPresionado) {
             case 1:
                 button = reg1;
                 break;
@@ -2765,17 +2804,17 @@ public class PreEntradasMultiplesQrActivity extends mx.linkom.caseta_linkaccess.
                 break;
         }
 
-        if (estado == 0){
+        if (estado == 0) {
             button.setBackgroundResource(R.drawable.btn_presionado);
             button.setTextColor(0xFF5A6C81);
-        }else if (estado == 1){
+        } else if (estado == 1) {
             button.setBackgroundResource(R.drawable.ripple_effect);
             button.setTextColor(0xFF27374A);
             button.setEnabled(true);
         }
     }
 
-    public void alertaErrorAlRegistrar(String texto){
+    public void alertaErrorAlRegistrar(String texto) {
         pd.dismiss();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PreEntradasMultiplesQrActivity.this);
         alertDialogBuilder.setTitle("Alerta");

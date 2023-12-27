@@ -5,6 +5,7 @@ import static solar.blaz.date.week.WeekDatePicker.TAG;
 
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Log;
@@ -24,6 +26,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -66,6 +69,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -124,6 +128,8 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     private int btnRegistrarPresionado = 0;
 
+    private ImageButton btnMicrofonoComentarios;
+    private static final int TXT_COMENTARIOS = 200;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -213,6 +219,16 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
         btn_fotoPlaca = (Button) findViewById(R.id.btn_fotoPlaca);
         viewPlaca = (ImageView) findViewById(R.id.viewPlaca);
         espacio2Placa = (LinearLayout) findViewById(R.id.espacio2Placa);
+
+        btnMicrofonoComentarios = (ImageButton) findViewById(R.id.btnMicrofonoComentarios);
+        Comentarios.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        btnMicrofonoComentarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iniciarEntradVoz("Diga los comentarios para esta visita", TXT_COMENTARIOS);
+            }
+        });
+
         /*iconoInternet = (ImageView) findViewById(R.id.iconoInternetActivitiAccesos);
 
         if (Global_info.getINTERNET().equals("Si")) {
@@ -730,6 +746,12 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
                             ja6 = new JSONArray(response);
                             imagenes();
 
+                            if (ja6.getString(10).trim().equals("1")){
+                                Global.setFotoPlaca(true);
+                            }else {
+                                Global.setFotoPlaca(false);
+                            }
+
                             //OCULTAR VIEW DE FOTO PLACA
                             if (ja6.getString(3).equals("0") && (ja6.getString(10).trim().equals("1") && !Conf.getTipoReg().equals("Peatonal")) && rutaImagenPlaca != null){
                                 try {
@@ -752,7 +774,6 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
                                 Log.e("borrar", "OK");
                             }
 
-                            Log.e("rutaimg", ""+rutaImagenPlaca + " ja6: " + ja6.getString(3));
                             Visita();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -884,6 +905,20 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     //FOTOS
+    private void iniciarEntradVoz(String promt, int campo) {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, promt);
+
+        intent.putExtra("FIELD_EXTRA", campo);
+
+        try {
+            startActivityForResult(intent, campo);
+        } catch (ActivityNotFoundException e) {
+            Log.e("RECTETXT", e.toString());
+        }
+    }
 
     public void imgFotoPlacaOffline() {
         Intent intentCaptura = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -1308,6 +1343,12 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
                     LinLayEspacioPlacasCono.setVisibility(View.GONE);
                 }
 
+            }
+
+            if (requestCode == TXT_COMENTARIOS && data != null) {
+                ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                String txtAnterior = " " + Comentarios.getText() + " " + result.get(0);
+                Comentarios.setText(txtAnterior);
             }
         }
     }
@@ -1930,15 +1971,15 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
 
         if ((Placas.getText().toString().equals("") && si.isChecked() && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals(""))) {
             pd.dismiss();
-            botonPresionado(1);
+
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else if ((Placas.getText().toString().equals(" ") && si.isChecked() && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals(" "))) {
             pd.dismiss();
-            botonPresionado(1);
+
             Toast.makeText(getApplicationContext(), "Campo de placas ", Toast.LENGTH_SHORT).show();
         } else if ((Placas.getText().toString().equals("N/A") && si.isChecked() && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals("N/A"))) {
             pd.dismiss();
-            botonPresionado(1);
+
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else {
 
