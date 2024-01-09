@@ -305,7 +305,7 @@ public class EscaneoVisitaActivity extends mx.linkom.caseta_linkaccess.Menu {
     int dia = fecha.get(Calendar.DAY_OF_MONTH);
 
     public void menu() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/menu.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -340,7 +340,7 @@ public class EscaneoVisitaActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void submenu(final String id_app) {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -739,7 +739,7 @@ public class EscaneoVisitaActivity extends mx.linkom.caseta_linkaccess.Menu {
 
 
     public void QR() {
-        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String url = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -1017,7 +1017,7 @@ public class EscaneoVisitaActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     public void QR_codigo() {
 
-        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String url = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -1271,7 +1271,7 @@ public class EscaneoVisitaActivity extends mx.linkom.caseta_linkaccess.Menu {
                     }).create().show();
 
         } else {
-            String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_reg_4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String url = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_reg_4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

@@ -201,7 +201,7 @@ public class RondinInfoQrActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void rondin() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/rondines_qr_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/rondines_qr_2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -251,7 +251,7 @@ public class RondinInfoQrActivity extends mx.linkom.caseta_linkaccess.Menu {
 
             if(ja1.getString(7).equals(Conf.getQRondines())){
 
-                String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/rondines_qr_3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+                String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/rondines_qr_3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override

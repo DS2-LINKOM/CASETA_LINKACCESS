@@ -70,7 +70,7 @@ public class ListaReservacionesActivity extends AppCompatActivity {
     }
 
     public void reservaciones() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reservaciones_mes.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reservaciones_mes.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

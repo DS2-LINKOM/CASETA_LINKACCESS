@@ -160,7 +160,7 @@ public class EntregaActivity extends mx.linkom.caseta_linkaccess.Menu {
 
 
     public void check() {
-        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/correspondencia_5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -199,7 +199,7 @@ public class EntregaActivity extends mx.linkom.caseta_linkaccess.Menu {
 
 
     public void check2() {
-        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_6.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/correspondencia_6.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -386,7 +386,7 @@ public class EntregaActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     public void Registrar(){
 
-        String url = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/correspondencia_7.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/correspondencia_7.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -432,7 +432,7 @@ public class EntregaActivity extends mx.linkom.caseta_linkaccess.Menu {
                 pd.dismiss();
                 Log.e("TAG","Error: " + error.toString());
                 botonPresionado(1);
-                alertaErrorAlRegistrar("Error al registrar visita \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
+                alertaErrorAlRegistrar("Error al registrar \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
             }
         }){
             @Override

@@ -18,7 +18,7 @@ public class Global_info extends Application {
     private static String TEXTO2_IMAGENES = "Fotografía pendiente por subir";
     private static String TEXTO3_IMAGENES = "Fotografía no disponible en offline";
     //private static String URL = "http://192.168.0.110/android/demoCaseta/";
-    private static String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/off-line/";
+    private static String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/off-line/";
 
     private static int LIMITE_FOTOS_SEGUNDO_PLANO = 0;
 

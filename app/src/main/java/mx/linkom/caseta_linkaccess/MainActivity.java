@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
 
-            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/pin.php";
+            String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/pin.php";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
     public void Residencial() {
 
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/residencial.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/residencial.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
 
-            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/session.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+            String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/session.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

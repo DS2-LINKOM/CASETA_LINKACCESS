@@ -363,7 +363,7 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void Eliminar() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reg_traba5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -420,7 +420,7 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void Datos() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba6.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reg_traba6.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -548,7 +548,7 @@ public class RegTrab3Activity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void Registro() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba7.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reg_traba7.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

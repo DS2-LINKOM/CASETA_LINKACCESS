@@ -171,7 +171,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
 
 
     public void menu() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php";
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/menu.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -206,7 +206,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
     }
 
     public void submenu(final String id_app) {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu_2.php";
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/menu_2.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -254,7 +254,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
 
     public void Visita(){
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php1.php";
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php1.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -291,7 +291,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
 
     public void Usuario(final String IdUsu){ //DATOS USUARIO
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php2.php";
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php2.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -327,7 +327,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
     }
 
     public void dtlLugar(final String idUsuario){
-        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php3.php";
+        String URLResidencial = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php3.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
             @Override
@@ -372,7 +372,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
 
 
     public void salidas (final String id_visitante){
-        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php6.php";
+        String URLResidencial = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php6.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
             @Override
@@ -745,7 +745,7 @@ public class VisitasRecepEntradasDetalle extends mx.linkom.caseta_linkaccess.Men
     public void Registrar (final String aprobar){
 
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/visitas_recep_3.php";
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/visitas_recep_3.php";
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {

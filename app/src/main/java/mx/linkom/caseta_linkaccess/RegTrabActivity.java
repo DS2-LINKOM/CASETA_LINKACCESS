@@ -376,7 +376,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
 
     public void traeDepartamento() {
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reg_traba1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -516,7 +516,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
                         }
                     }).create().show();
         } else {
-            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+            String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reg_traba2.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -539,7 +539,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
                 public void onErrorResponse(VolleyError error) {
                     Log.e("TAG", "Error: " + error.toString());
                     botonPresionado(1);
-                    alertaErrorAlRegistrar("Error al registrar visita \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
+                    alertaErrorAlRegistrar("Error al registrar \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
                 }
             }) {
                 @Override
@@ -558,7 +558,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
     }
 
     public void Registro() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/reg_traba3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/reg_traba3.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -624,7 +624,7 @@ public class RegTrabActivity extends mx.linkom.caseta_linkaccess.Menu {
             public void onErrorResponse(VolleyError error) {
                 Log.e("TAG", "Error: " + error.toString());
                 botonPresionado(1);
-                alertaErrorAlRegistrar("Error al registrar visita \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
+                alertaErrorAlRegistrar("Error al registrar \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
             }
         }) {
             @Override

@@ -667,7 +667,7 @@ public class IncidenciaActivity  extends mx.linkom.caseta_linkaccess.Menu{
 
     public void Registrar(final int Id){
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/incidencias.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/incidencias.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -760,7 +760,7 @@ public class IncidenciaActivity  extends mx.linkom.caseta_linkaccess.Menu{
                 Log.e("TAG","Error: " + error.toString());
 
                 botonPresionado(1);
-                alertaErrorAlRegistrar("Error al registrar visita \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
+                alertaErrorAlRegistrar("Error al registrar incidencia \n\nNo se ha podido establecer comunicación con el servidor, inténtelo de nuevo");
 
             }
         }){

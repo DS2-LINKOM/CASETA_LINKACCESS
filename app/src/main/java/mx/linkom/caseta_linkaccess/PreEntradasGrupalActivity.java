@@ -589,7 +589,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void menu() {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -664,7 +664,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void submenu(final String id_app) {
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/menu_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1387,7 +1387,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
     public void Visita() {
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_gru_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_gru_2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1460,7 +1460,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
     public void Usuario(final String IdUsu) { //DATOS USUARIO
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php2.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -1531,7 +1531,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void dtlLugar(final String idUsuario) {
-        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php3.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URLResidencial = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php3.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
             @Override
@@ -1600,7 +1600,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
     }
 
     public void salidas(final String id_visitante) {
-        String URLResidencial = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URLResidencial = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php4.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLResidencial, new Response.Listener<String>() {
 
@@ -1683,7 +1683,7 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
     public void Dtl_pre() {
 
-        String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_reg_8.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_reg_8.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -2193,19 +2193,22 @@ public class PreEntradasGrupalActivity extends mx.linkom.caseta_linkaccess.Menu 
 
         if ((Placas.getText().toString().equals("") && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals(""))) {
             pd.dismiss();
+            botonPresionado(1);
 
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else if ((Placas.getText().toString().equals(" ") && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals(" "))) {
             pd.dismiss();
+            botonPresionado(1);
 
             Toast.makeText(getApplicationContext(), "Campo de placas ", Toast.LENGTH_SHORT).show();
         } else if ((Placas.getText().toString().equals("N/A") && !Global.getFotoPlaca()) || (Global.getFotoPlaca() && editTextPlacasPorFoto.getText().toString().equals("N/A"))) {
             pd.dismiss();
+            botonPresionado(1);
 
             Toast.makeText(getApplicationContext(), "Campo de placas", Toast.LENGTH_SHORT).show();
         } else {
 
-            String URL = "https://linkaccess.kap-adm.mx//plataforma/casetaV2/controlador/link_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String URL = "https://linkaccess.elkm.mx/plataforma/casetaV2/controlador/link_access/vst_php5.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
