@@ -1759,12 +1759,13 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
-                        Intent i = new Intent(getApplicationContext(), EntradasSalidasActivity.class);
+                        botonPresionado(1);
+                        /*Intent i = new Intent(getApplicationContext(), EntradasSalidasActivity.class);
                         startActivity(i);
-                        finish();
+                        finish();*/
 
                     }
-                }).create().show();
+                }).setCancelable(false).create().show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

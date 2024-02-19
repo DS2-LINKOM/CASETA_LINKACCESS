@@ -470,9 +470,14 @@ public class AccesosSalidasActivity extends mx.linkom.caseta_linkaccess.Menu {
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
+                String placa = (Global.isBuscarPorPlaca()) ? Conf.getPlacas() : "";
+
                 Map<String, String> params = new HashMap<>();
                 params.put("QR", Conf.getQR().trim());
                 params.put("id_residencial", Conf.getResid().trim());
+                params.put("placas", placa.trim());
+
                 return params;
             }
         };
@@ -687,9 +692,13 @@ public class AccesosSalidasActivity extends mx.linkom.caseta_linkaccess.Menu {
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
+                String placa = (Global.isBuscarPorPlaca()) ? Conf.getPlacas() : "";
+
                 Map<String, String> params = new HashMap<>();
                 params.put("id_visitante", id_visitante.trim());
                 params.put("id_residencial", Conf.getResid().trim());
+                params.put("placas", placa.trim());
 
                 return params;
             }

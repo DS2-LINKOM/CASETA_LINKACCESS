@@ -116,6 +116,7 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
 
         anuncioVersiones = (ConstraintLayout) findViewById(R.id.constLayoutAnuncioVersiones);
 
+        Global.setBuscarPorPlaca(false);
 
         /*iconoInternet = (ImageView) findViewById(R.id.iconoInternetDashboard);
 
