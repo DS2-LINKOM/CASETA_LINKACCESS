@@ -1,7 +1,8 @@
 package mx.linkom.caseta_linkaccess;
 
+import static android.content.ContentValues.TAG;
 import static android.view.View.GONE;
-import static solar.blaz.date.week.WeekDatePicker.TAG;
+//import static solar.blaz.date.week.WeekDatePicker.TAG;
 
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
@@ -2367,6 +2368,7 @@ public class AccesoRegistroActivity extends mx.linkom.caseta_linkaccess.Menu {
         if (externalFilesDir != null) {
             tempfilepath = externalFilesDir.getAbsolutePath();
             Log.e(TAG, tempfilepath);
+
             try {
                 File grTempFiles = new File(tempfilepath);
                 if (grTempFiles.exists()) {

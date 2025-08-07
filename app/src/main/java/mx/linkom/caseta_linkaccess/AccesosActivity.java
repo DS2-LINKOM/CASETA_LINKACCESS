@@ -1,7 +1,8 @@
 package mx.linkom.caseta_linkaccess;
 
 import static android.view.View.GONE;
-import static solar.blaz.date.week.WeekDatePicker.TAG;
+//import static solar.blaz.date.week.WeekDatePicker.TAG;
+import static android.content.ContentValues.TAG;
 
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
@@ -1955,6 +1956,7 @@ public class AccesosActivity extends mx.linkom.caseta_linkaccess.Menu {
 
             } catch (Exception ex) {
                 Log.e(TAG, "ERROR: " + ex.toString());
+
             }
         }
     }

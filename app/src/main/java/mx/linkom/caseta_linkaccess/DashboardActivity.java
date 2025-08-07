@@ -366,8 +366,8 @@ public class DashboardActivity extends  mx.linkom.caseta_linkaccess.Menu {
                 if (response.length()>0){
                     try {
                         ja2 = new JSONArray(response);
-
-                        if (Global.getVersionApp().trim() != ja3.getString(16).trim()){
+                        if (!Global.getVersionApp().trim().equals(ja3.getString(16).trim())){
+                           // if (Global.getVersionApp().trim() != ja3.getString(16).trim()){
                             anuncioVersiones.setVisibility(View.VISIBLE);
                             textViewVersionDisponible.setText("Versión: Link Access " + ja3.getString(16));
                             AnimationUtil.startAnimation(DashboardActivity.this, anuncioVersiones);
